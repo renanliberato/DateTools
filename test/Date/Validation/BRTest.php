@@ -8,44 +8,44 @@ class BRTest extends \PHPUnit_Framework_TestCase
 {
     public function testisEmptyWithNullDate()
     {
-        $this->assertEquals(Validator::isEmpty(null), true);
+        $this->assertEquals(true, Validator::isEmpty(null));
     }
 
     public function testisEmptyWithStringDate()
     {
-        $this->assertEquals(Validator::isEmpty('2016-12-25'), false);
+        $this->assertEquals(false, Validator::isEmpty('2016-12-25'));
     }
 
     public function testisEmptyWithZeroIntegerDate()
     {
-        $this->assertEquals(Validator::isEmpty(0), false);
+        $this->assertEquals(false, Validator::isEmpty(0));
     }
 
     public function testIsValidWithValidDate()
     {
-        $this->assertEquals(Validator::isValid('2016-12-25'), true);
+        $this->assertEquals(true, Validator::isValid('2016-12-25'));
     }
 
     public function testIsValidWithWrongSeparator()
     {
-        $this->assertEquals(Validator::isValid('2016/12/25'), true);
+        $this->assertEquals(true, Validator::isValid('2016/12/25'));
     }
 
     public function testIsValidWithWrongNumberOfDigits()
     {
-        $this->assertEquals(Validator::isValid('20165-12-25'), true);
-        $this->assertEquals(Validator::isValid('2016-121-25'), true);
-        $this->assertEquals(Validator::isValid('2016-12-252'), true);
+        $this->assertEquals(true, Validator::isValid('20165-12-25'));
+        $this->assertEquals(true, Validator::isValid('2016-121-25'));
+        $this->assertEquals(true, Validator::isValid('2016-12-252'));
     }
 
     public function testIsValidWithInvalidPartOfTheDate()
     {
-        $this->assertEquals(Validator::isValid('2016-25-12'), false);
-        $this->assertEquals(Validator::isValid('2016-10-33'), false);
+        $this->assertEquals(false, Validator::isValid('2016-25-12'));
+        $this->assertEquals(false, Validator::isValid('2016-10-33'));
     }
 
     public function testIsValidWithNullDate()
     {
-        $this->assertEquals(Validator::isValid(null), false);
+        $this->assertEquals(false, Validator::isValid(null));
     }
 }
